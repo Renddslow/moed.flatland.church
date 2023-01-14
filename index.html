@@ -200,7 +200,7 @@
                    }
                 });
 
-                const season = getSeason(new Date(2023, 4, 28));
+                const season = getSeason(new Date());
                 const color = SEASON_COLOR_MAP[season];
                 document.documentElement.style.setProperty(`--primary`, `var(--${color || 'green'})`);
                 document.querySelector('.tag').innerText = season ? SEASON_MESSAGE_MAP[season] : 'The year is over!';
