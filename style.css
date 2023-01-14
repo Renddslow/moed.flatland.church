@@ -1,0 +1,232 @@
+:root {
+    --primary: #14591D;
+
+    --purple: #5B3C6D;
+    --white: #000;
+    --red: #9B1B1B;
+    --gold: #FDB813;
+    --green: #14591D
+}
+
+body {
+    background: #dddade;
+}
+
+#wrapper {
+    width: 100%;
+    padding: 48px;
+    max-width: 1024px;
+    margin: 0 auto;
+    position: relative;
+}
+
+h1.desktop {
+    transform: rotate(-90deg) translate(-100%, -60%);
+    transform-origin: bottom left;
+    font-size: 150px;
+    position: fixed;
+    top: -48px;
+    left: 50%;
+    line-height: 0.9;
+}
+
+h1, h2, h3 {
+    color: var(--primary);
+    z-index: 1000;
+}
+
+@media screen and (min-width: 1024px) {
+    h1.desktop {
+        transform: rotate(-90deg) translate(-100%, -80%);
+    }
+}
+
+h2 {
+    padding: 24px;
+    text-align: right;
+}
+
+.column {
+    width: calc(100% - 270px);
+    margin-left: auto;
+    font-size: 20px;
+}
+
+.season {
+    padding: 48px 24px;
+    display: grid;
+    grid-gap: 18px;
+    grid-template-columns: minmax(0, 1fr);
+    position: relative;
+    z-index: 1;
+}
+
+.season::before {
+    content: "";
+    width: 100px;
+    height: 100px;
+    display: block;
+    opacity: 0.3;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, 50%);
+    z-index: -1;
+}
+
+.season.purple::before {
+    background: var(--purple);
+}
+.season.red::before {
+    background: var(--red);
+}
+.season.gold::before {
+    background: var(--gold);
+}
+.season.white::before {
+    background: #fff;
+}
+.season.green::before {
+    background: var(--green);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, max-content);
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.tag {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 100px;
+    margin-left: auto;
+    display: block;
+    width: max-content;
+}
+
+h1.mobile {
+    display: none;
+}
+
+.season p:last-child {
+    line-height: 1.5;
+}
+
+.reminder {
+    padding: 24px;
+    font-size: 16px;
+    line-height: 1.5;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-gap: 12px;
+}
+
+@media screen and (max-width: 768px) {
+    h1.mobile {
+        display: block;
+        text-align: right;
+        font-size: 60px;
+    }
+
+    h1.desktop {
+        display: none;
+    }
+
+    h2 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .column {
+        width: 100%;
+    }
+
+    .season {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .row {
+        display: block;
+    }
+
+    .row p:last-child {
+        font-size: 18px;
+    }
+
+    .reminder {
+        padding: 24px 0;
+    }
+}
+
+.reminder a {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#reminder {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, max-content);
+    grid-gap: 8px;
+    margin-top: 24px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+.form-control input {
+    display: block;
+    padding: 12px 24px;
+    border-radius: 4px;
+    border: 2px solid #9c9c9c;
+    width: 100%;
+    font-size: 16px;
+}
+
+.form-control input:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.form-control label {
+    position: absolute;
+    font-size: 16px;
+    top: 10px;
+    left: 22px;
+    transition: top 0.1s ease-out, left 0.1s ease-out, background 0.05s ease-out;
+    touch-action: none;
+    color: #777;
+}
+
+.form-control input.filled + label,
+.form-control:focus-within label {
+    font-size: 12px;
+    font-weight: 600;
+    top: -12px;
+    left: 12px;
+    padding: 4px;
+    background: linear-gradient(0deg, #fff 49%, #dddade 50%);
+}
+
+.form-control:focus-within label {
+    color: var(--primary);
+}
+
+#reminder button {
+    font-weight: 600;
+    appearance: none;
+    background: var(--primary);
+    font-size: 14px;
+    border-radius: 4px;
+    color: #fff;
+    padding: 12px 24px;
+    border: 0;
+}
