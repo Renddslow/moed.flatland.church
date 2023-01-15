@@ -206,7 +206,7 @@
                     btn.disabled = true;
                     btn.innerText = 'Sending...';
 
-                    const payload = { email: e.email.value };
+                    const payload = { email: document.querySelector('#email').value };
 
                     await fetch('/.netlify/functions/reminder', {
                         method: 'POST',
