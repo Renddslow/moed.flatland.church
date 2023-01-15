@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "faunadb": "^4.7.1",
     "netlify-cli": "^12.7.2"
   }
 }

@@ -26,7 +26,7 @@
                     <p>It can be easy when you're new to it to remember when a season is coming up. Sign up below to receive one or two emails ahead of each season as a reminder and encouragement to experience seasonal rhythms.</p>
                     <form id="reminder">
                         <div class="form-control">
-                            <input type="email" id="email" name="email">
+                            <input type="email" id="email" name="email" required>
                             <label for="email">Email</label>
                         </div>
                         <button type="submit">Sign Up</button>
@@ -199,6 +199,22 @@
                        input.classList.remove('filled');
                    }
                 });
+
+                document.getElementById('reminder').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const btn = document.querySelector('[type="submit"]');
+                    btn.disabled = true;
+                    btn.innerText = 'Sending...';
+
+                    const payload = { email: e.email.value };
+
+                    await fetch('/.netlify/functions/reminder', {
+                        method: 'POST',
+                        body: JSON.stringify(payload)
+                    });
+
+                    document.getElementById('reminder').innerHTML = `<p>Thanks! You'll be hearing from us again as Lent approaches. In the meantime, consider getting a <a href="https://flatlandchurch.com/coaching">coach</a> or a <a href="https://flatlandchurch.com/mentoring">mentor</a> to help you discern what rhythms the Spirit may be leading you into.</p>`;
+                })
 
                 const season = getSeason(new Date());
                 const color = SEASON_COLOR_MAP[season];
